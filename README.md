@@ -1,4 +1,4 @@
-# Assignment3
+# Assignment 3
 ## Group Members: 
 Sagar Joshi - sagar0698@csu.fullerton.edu 
 
