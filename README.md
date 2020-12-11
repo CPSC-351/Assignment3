@@ -18,4 +18,8 @@ Dustin Vuong - dhvuong@csu.fullerton.edu
 * `g++ -pthread -o threads threads.cpp`
 
 ## To run use :
-* `./threads`
+* `./threads <number>`
+
+## Comments
+This assignment was completed with the assistance of your lectures, examples, 
+and the internet. 
