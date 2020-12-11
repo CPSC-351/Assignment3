@@ -28,7 +28,7 @@ Node* createNewNode(int x)
 }
 
 // Insert the value into our BST
-void bstInsert(Node* &root, int x)
+void Node::bstInsert(Node* &root, int x)
 {
     if(root == nullptr) {
         root = createNewNode(x);
