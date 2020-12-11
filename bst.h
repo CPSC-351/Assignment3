@@ -7,19 +7,20 @@ Sources can be found here:
   https://www.techiedelight.com/print-nodes-binary-tree-specific-order/
 
 */
-
+#include <queue>
+using namespace std;
 // Basic structure for our tree nodes
-struct treeNode {
-   int val;
-   treeNode* left;
-   treeNode* right;
+struct Node {
+   int key;
+   Node* left;
+   Node* right;
 };
 
 // Create a new tree node
-treeNode* createNewNode(int x)
+Node* createNewNode(int x)
 {
-    treeNode* nn = new treeNode;
-    nn->val = x;
+    Node* nn = new Node;
+    nn->key = x;
     nn->left  = nullptr;
     nn->right = nullptr;
 
@@ -27,14 +28,14 @@ treeNode* createNewNode(int x)
 }
 
 // Insert the value into our BST
-void bstInsert(treeNode* &root, int x)
+void bstInsert(Node* &root, int x)
 {
     if(root == nullptr) {
         root = createNewNode(x);
         return;
     }
 
-    if(x < root->val)
+    if(x < root->key)
     {
         if(root->left == nullptr) {
             root->left = createNewNode(x);
@@ -44,7 +45,7 @@ void bstInsert(treeNode* &root, int x)
         }
     }
 
-    if( x > root->val )
+    if( x > root->key )
     {
         if(root->right == nullptr) {
             root->right = createNewNode(x);
@@ -53,6 +54,7 @@ void bstInsert(treeNode* &root, int x)
             bstInsert(root->right, x);
         }
     }
+}
 /*
 ========================================================================
   The below function was taken and modified from:
@@ -60,8 +62,7 @@ void bstInsert(treeNode* &root, int x)
 ========================================================================
 / Function to print all nodes of a given binary tree in specific
 / order from top to bottom*/
-void printTree(Node* root)
-    {
+void printTree(Node* &root){
     // return is tree is empty
     if (root == nullptr)
         return;
@@ -85,7 +86,7 @@ void printTree(Node* root)
       while (n--)
         {
         // pop front node from first queue and print it
-          treeNode* x = q1.front();
+          Node* x = q1.front();
           q1.pop();
 
           cout << x->key << " ";
@@ -98,7 +99,7 @@ void printTree(Node* root)
               q1.push(x->right);
 
           // pop front node from second queue and print it
-               treeNode* y = q2.front();
+               Node* y = q2.front();
                q2.pop();
                cout << y->key << " ";
 
@@ -111,5 +112,4 @@ void printTree(Node* root)
             }
         }
     }
-}
 #endif //BST_H_
