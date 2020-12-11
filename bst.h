@@ -28,7 +28,7 @@ Node* createNewNode(int x)
 }
 
 // Insert the value into our BST
-void Node::bstInsert(Node* &root, int x)
+void bstInsert(Node* &root, int x)
 {
     if(root == nullptr) {
         root = createNewNode(x);
@@ -55,61 +55,13 @@ void Node::bstInsert(Node* &root, int x)
         }
     }
 }
-/*
-========================================================================
-  The below function was taken and modified from:
-    https://www.techiedelight.com/print-nodes-binary-tree-specific-order/
-========================================================================
-/ Function to print all nodes of a given binary tree in specific
-/ order from top to bottom*/
-void printTree(Node* &root){
-    // return is tree is empty
-    if (root == nullptr)
-        return;
 
-    // print root node
-    cout << root->key << " ";
+void inorder(Node *root) {
+  if (root != NULL) {
+    inorder(root->left);
+    cout << root->key << endl;
+    inorder(root->right);
+  }
+}
 
-    // create a two empty queues and enqueue root's left and
-    // right child respectively
-    queue<Node*> q1, q2;
-    q1.push(root->left);
-    q2.push(root->right);
-
-    // loop till queue is empty
-    while (!q1.empty())
-    {
-      // calculate number of nodes in current level
-      int n = q1.size();
-
-      // process every node of current level
-      while (n--)
-        {
-        // pop front node from first queue and print it
-          Node* x = q1.front();
-          q1.pop();
-
-          cout << x->key << " ";
-
-          // push left and right child of x to first queue
-            if (x->left)
-              q1.push(x->left);
-
-            if (x->right)
-              q1.push(x->right);
-
-          // pop front node from second queue and print it
-               Node* y = q2.front();
-               q2.pop();
-               cout << y->key << " ";
-
-          // push right and left child of y to second queue
-            if (y->right)
-                q2.push(y->right);
-
-            if (y->left)
-                q2.push(y->left);
-            }
-        }
-    }
 #endif //BST_H_
